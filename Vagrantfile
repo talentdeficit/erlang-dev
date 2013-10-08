@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   
   # provision via chef_solo
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe "default"
+    chef.add_recipe "prototype"
     chef.json = {
       "default" => {
         "user"  => GIT_USER,
