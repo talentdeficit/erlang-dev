@@ -14,7 +14,7 @@ $ vagrant ssh
 
 ## configuration ##
 
-currently the only configuration available is in `data_bags/config/git.json` where you
+currently the only configuration available is in `settings.rb` where you
 can set the default git username and email address
 
 

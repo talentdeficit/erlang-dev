@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# user configurable settings
+require './settings'
+
 Vagrant.configure("2") do |config|
 
   # use ubuntu precise pangolin 32 bit
@@ -12,7 +15,12 @@ Vagrant.configure("2") do |config|
   
   # provision via chef_solo
   config.vm.provision :chef_solo do |chef|
-    chef.data_bags_path = "data_bags"
     chef.add_recipe "default"
+    chef.json = {
+      "default" => {
+        "user"  => GIT_USER,
+        "email" => GIT_EMAIL
+      }
+    }
   end
 end

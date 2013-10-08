@@ -2,10 +2,8 @@ include_recipe "apt"
 include_recipe "build-essential"
 include_recipe "git"
 
-git_config = data_bag_item("config", "git")
-
-user = git_config["name"]
-email = git_config["email"]
+user = node["default"]["user"]
+email = node["default"]["email"]
 
 if user
   bash "git user" do
