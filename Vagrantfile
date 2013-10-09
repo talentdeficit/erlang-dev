@@ -9,6 +9,12 @@ Vagrant.configure("2") do |config|
   # use ubuntu precise pangolin 32 bit
 	config.vm.box = "precise32"
 
+  # use SYNCED_DIRS in `settings.rb' to mirror directories on the host system to
+  #  the vm filesystem
+  SYNCED_DIRS.each do |dir|
+    config.vm.synced_folder dir.first, dir.last
+  end
+
   # use ssh_agent to forward keys so private keys for github etc don't need
   #   to be provisioned
   config.ssh.forward_agent = true
