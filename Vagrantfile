@@ -21,9 +21,10 @@ Vagrant.configure("2") do |config|
   
   # provision via chef_solo
   config.vm.provision :chef_solo do |chef|
+    chef.add_recipe "base"
     chef.add_recipe "erlang-dev"
     chef.json = {
-      "default" => {
+      "base" => {
         "user"  => GIT_USER,
         "email" => GIT_EMAIL
       },

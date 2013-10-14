@@ -7,7 +7,7 @@ VAGRANT_BOX = "precise32"
 #  you should set those here
 # GIT_USER = "your name"
 GIT_USER = nil
-# GIT_EMAIL = "youremail@foo.com"
+# GIT_EMAIL = "your@email.com"
 GIT_EMAIL = nil
 
 
