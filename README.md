@@ -17,18 +17,23 @@ all configuration is accessed via `settings.rb`
 ### vagrant base image ###
 
 * `VAGRANT_BOX`
+    
     `precise32` is the default base image but anything debian-like from [vagrantbox.es][http://www.vagrantbox.es/] should work
 
 ### git configuration ###
 
 * `GIT_USER`
+    
     sets `git config --system user.name`
+
 * `GIT_EMAIL`
+    
     sets `git config --system user.email`
 
 ### synced directories ###
 
 * `SYNCED_DIRS`
+    
     vagrant supports syncing (mirroring) directories on the host machine with directories on the virtual machine. `SYNCED_DIRS` is a list of 2 element arrays that map a directory on the host machine to a directory on the virtual machine. vagrant requires the directory on the virtual machine be specified as an absolute path. the host machine directories may be specified relative to the `Vagrantfile`
 
 
