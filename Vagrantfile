@@ -7,7 +7,7 @@ require './settings'
 Vagrant.configure("2") do |config|
 
   # use ubuntu precise pangolin 32 bit
-	config.vm.box = "precise32"
+	config.vm.box = VAGRANT_BOX
 
   # use SYNCED_DIRS in `settings.rb' to mirror directories on the host system to
   #  the vm filesystem
