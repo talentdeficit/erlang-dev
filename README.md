@@ -1,10 +1,33 @@
-# basicest (v0.9) #
+# erlang-dev (v0.10) #
 
-a really basic vagrant config for debian-like linux dev envs with apt, build-essential and git
+a disposable [vagrant][vagrant] enviroment for erlang development. based on [basicest][basicest]
+
+provisioned with chef
+
+erlang-dev is released under the terms of the [MIT][MIT] license
+
+copyright 2013 alisdair sullivan
 
 
-## usage ##
+## index ##
 
+* [quickstart](#quickstart)
+* [configuration](#configuration)
+* [description](#description)
+* [acknowledgements](#acknowledgements)
+* [license](#license)
+
+
+## quickstart ##
+
+install [vagrant][vagrant]
+
+download the required vagrant box
+```bash
+$ vagrant init precise32 http://files.vagrantup.com/precise32.box
+```
+
+start vagrant and get to work
 ```bash
 $ vagrant up
 $ vagrant ssh
@@ -32,6 +55,18 @@ all configuration is accessed via `settings.rb`
     vagrant supports syncing (mirroring) directories on the host machine with directories on the virtual machine. `SYNCED_DIRS` is a list of 2 element arrays that map a directory on the host machine to a directory on the virtual machine. vagrant requires the directory on the virtual machine be specified as an absolute path. the host machine directories may be specified relative to the `Vagrantfile`
 
 
+## description ##
+
+it's early days. right now it just builds an ubuntu environment with the latest erlang. stay tuned
+
+
+
+## acknowledgements ##
+
+all those people who can't get erlang to build on their machine
+
+
+
 ## license ##
 
 The MIT License (MIT)
@@ -54,3 +89,9 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+[vagrant]: http://www.vagrantup.com/
+[basicest]: https://github.com/talentdeficit/basicest
+[MIT]: http://www.opensource.org/licenses/mit-license.html
