@@ -1,20 +1,23 @@
 # basicest (v0.9) #
 
-a really basic vagrant config for ubuntu (precise32) dev envs with apt, build-essential and git
+a really basic vagrant config for debian-like linux dev envs with apt, build-essential and git
 
 
 ## usage ##
-
 
 ```bash
 $ vagrant up
 $ vagrant ssh
 ```
 
-
 ## configuration ##
 
 all configuration is accessed via `settings.rb`
+
+### vagrant base image ###
+
+* `VAGRANT_BOX`
+    `precise32` is the default base image but anything debian-like from [vagrantbox.es][http://www.vagrantbox.es/] should work
 
 ### git configuration ###
 
@@ -25,12 +28,8 @@ all configuration is accessed via `settings.rb`
 
 ### synced directories ###
 
-vagrant supports syncing (mirroring) directories on the host machine with
-directories on the virtual machine. `SYNCED_DIRS` is a list of 2 element
-arrays that map a directory on the host machine to a directory on the
-virtual machine. vagrant requires the directory on the virtual machine
-be specified as an absolute path. the host machine directories may be specified
-relative to the `Vagrantfile`
+* `SYNCED_DIRS`
+    vagrant supports syncing (mirroring) directories on the host machine with directories on the virtual machine. `SYNCED_DIRS` is a list of 2 element arrays that map a directory on the host machine to a directory on the virtual machine. vagrant requires the directory on the virtual machine be specified as an absolute path. the host machine directories may be specified relative to the `Vagrantfile`
 
 
 ## license ##
