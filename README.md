@@ -41,7 +41,7 @@ all configuration is accessed via `settings.rb`
 
 * `VAGRANT_BOX`
     
-    `precise32` is the default base image but anything debian-like from [vagrantbox.es][http://www.vagrantbox.es/] should work
+    `precise32` is the default base image but anything debian-like from [vagrantbox.es](http://www.vagrantbox.es/) should work
 
 ### git configuration ###
 

@@ -33,4 +33,4 @@ ERLENV_RELEASES = [
 
 
 # this will be the default `erl' on the resulting system
-SYSTEM_RELEASE = "OTP_R16B02"
+SYSTEM_RELEASE = "OTP_R16B03"
