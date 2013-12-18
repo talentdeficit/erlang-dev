@@ -23,7 +23,7 @@
 default['erlang']['releases'] = [{}]
 
 default['erlang']['otp_git_url'] = "https://github.com/erlang/otp"
-default['erlang']['otp_git_ref'] = "OTP_R16B02"
+default['erlang']['otp_git_ref'] = "OTP_R16B03"
 
 default['erlang']['rebar_git_url'] = "https://github.com/rebar/rebar"
 default['erlang']['rebar_git_ref'] = "HEAD"
