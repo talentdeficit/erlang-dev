@@ -38,7 +38,7 @@ node.default['erlang']['releases'] = [
 
 this will install `r16b` and `r15b03-1` in the specified locations
 
-leaving `releases` empty will result in installing `r16b02` in the `/usr/local`
+leaving `releases` empty will result in installing `r16b03` in the `/usr/local`
 with the default configure options
 
 the following attributes are available to override:
