@@ -21,3 +21,4 @@ end
 node.set['erlang']['rebar'] = true
 
 include_recipe "erlang"
+include_recipe "elixir"

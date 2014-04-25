@@ -28,9 +28,10 @@ ERLENV_RELEASES = [
 # {"otp_git_ref" => "OTP_R15B02", "prefix" => "/home/vagrant/.erlenv/releases/r15b02"},
 # {"otp_git_ref" => "OTP_R15B03-1", "prefix" => "/home/vagrant/.erlenv/releases/r15b03-1"},
 # {"otp_git_ref" => "OTP_R16B", "prefix" => "/home/vagrant/.erlenv/releases/r16b"},
-# {"otp_git_ref" => "OTP_R16B01", "prefix" => "/home/vagrant/.erlenv/releases/r16b01"}
+# {"otp_git_ref" => "OTP_R16B01", "prefix" => "/home/vagrant/.erlenv/releases/r16b01"},
+  {"otp_git_ref" => "OTP-17.0", "prefix" => "/home/vagrant/.erlenv/releases/17"}
 ]
 
 
 # this will be the default `erl' on the resulting system
-SYSTEM_RELEASE = "OTP_17.0-rc1"
+SYSTEM_RELEASE = "OTP_R16B03-1"
