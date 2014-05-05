@@ -21,4 +21,8 @@ end
 node.set['erlang']['rebar'] = true
 
 include_recipe "erlang"
+
+# install elixir 0.13.1
+node.set['elixir']['elixir_git_ref'] = 'v0.13.1'
+
 include_recipe "elixir"
