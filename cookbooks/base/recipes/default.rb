@@ -20,3 +20,12 @@ git config --system user.email "#{email}"
 EOH
   end
 end
+
+locale = node["base"]["locale"]
+
+file "/etc/default/locale" do
+  content <<-EOS
+LC_ALL="#{locale}"
+LANG=#{locale}
+EOS
+end

@@ -26,7 +26,8 @@ Vagrant.configure("2") do |config|
     chef.json = {
       "base" => {
         "user"  => GIT_USER,
-        "email" => GIT_EMAIL
+        "email" => GIT_EMAIL,
+        "locale" => LOCALE
       },
       "erlang" => {
         "releases" => ERLENV_RELEASES + [{"otp_git_ref" => SYSTEM_RELEASE}]
