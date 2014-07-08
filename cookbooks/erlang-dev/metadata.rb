@@ -20,12 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-name "erlang"
+name "erlang-dev"
 maintainer "alisdair sullivan"
 maintainer_email "alisdairsullivan@yahoo.ca"
 license "MIT"
-description "a chef recipe for installing erlang releases"
-version "0.1"
+description "chef recipe for an erlang dev vm"
+version "1.0"
 
 supports "redhat"
 supports "centos"
@@ -34,6 +34,6 @@ supports "scientific"
 supports "debian"
 supports "ubuntu"
 
-%w{ build-essential git }.each do |cookbook|
+%w{ build-essential git apt erlang }.each do |cookbook|
   depends cookbook
 end

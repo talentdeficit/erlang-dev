@@ -1,28 +1,51 @@
-if node["erlang"]["releases"].length > 1
-  git "erlenv" do
-    user "vagrant"
-    group "vagrant"
-    repository "https://github.com/talentdeficit/erlenv"
-    destination "/home/vagrant/.erlenv"
-    action :sync
-  end
+include_recipe "apt"
+include_recipe "build-essential"
+include_recipe "git"
 
-  file "/home/vagrant/.bash_profile" do
-    user "vagrant"
-    group "vagrant"
-    content <<-EOS
-export PATH="$HOME/.erlenv/bin:$PATH"
-eval "$(erlenv init -)"
-EOS
-  end
-end
-
-# include rebar by default for all erlang installations
-node.set['erlang']['rebar'] = true
+node.default["erlang"]["gui_tools"] = "false"
+node.default["erlang"]["install_method"] = "source"
 
 include_recipe "erlang"
 
-# install elixir 0.13.1
-node.set['elixir']['elixir_git_ref'] = 'v0.13.1'
+user = node["erlang-dev"]["user"]
+email = node["erlang-dev"]["email"]
 
-include_recipe "elixir"
+if user
+  bash "git user" do
+    code <<-EOH
+git config --system user.name "#{user}"
+EOH
+  end
+end
+
+if email
+  bash "git email" do
+    code <<-EOH
+git config --system user.email "#{email}"
+EOH
+  end
+end
+
+locale = node["erlang-dev"]["locale"]
+
+file "/etc/default/locale" do
+  content <<-EOS
+LC_ALL="#{locale}"
+LANG=#{locale}
+EOS
+end
+
+git "rebar" do
+  repository "https://github.com/rebar/rebar.git"
+  reference "2.5.0"
+  destination "#{Chef::Config['file_cache_path']}/rebar"
+  action :sync
+end
+
+bash "install rebar to /usr/local/bin" do
+  code <<-EOH
+cd #{Chef::Config['file_cache_path']}/rebar
+/usr/local/bin/escript bootstrap
+cp rebar /usr/local/bin/rebar
+EOH
+end

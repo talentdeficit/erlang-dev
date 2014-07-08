@@ -24,7 +24,7 @@ install [vagrant][vagrant]
 
 download the required vagrant box
 ```bash
-$ vagrant init precise32 http://files.vagrantup.com/precise32.box
+$ vagrant box add chef/ubuntu-12.10
 ```
 
 start vagrant and get to work

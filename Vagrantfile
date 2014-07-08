@@ -6,8 +6,15 @@ require './settings'
 
 Vagrant.configure("2") do |config|
 
-  # use ubuntu precise pangolin 32 bit
 	config.vm.box = VAGRANT_BOX
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", VM_MEMORY]
+  end
+  
+  config.ssh.forward_agent = true
+  
+  config.omnibus.chef_version = :latest
+  config.berkshelf.enabled = true
 
   # use SYNCED_DIRS in `settings.rb' to mirror directories on the host system to
   #  the vm filesystem
@@ -15,23 +22,21 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder dir.first, dir.last
   end
 
-  # use ssh_agent to forward keys so private keys for github etc don't need
-  #   to be provisioned
-  config.ssh.forward_agent = true
-  
   # provision via chef_solo
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe "base"
-    chef.add_recipe "erlang-dev"
+   chef.add_recipe "erlang-dev"
     chef.json = {
-      "base" => {
+      "erlang-dev" => {
         "user"  => GIT_USER,
         "email" => GIT_EMAIL,
         "locale" => LOCALE
       },
       "erlang" => {
-        "releases" => ERLENV_RELEASES + [{"otp_git_ref" => SYSTEM_RELEASE}]
+        "source" => {
+          "version" => ERLANG_RELEASE
+        }
       }
     }
   end
+
 end
