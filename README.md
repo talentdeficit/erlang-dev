@@ -1,6 +1,6 @@
-# erlang-dev (v0.10) #
+# erlang-dev (v1.0) #
 
-a disposable [vagrant][vagrant] enviroment for erlang development. based on [basicest][basicest]
+a disposable [vagrant][vagrant] enviroment for erlang development
 
 provisioned with chef
 
@@ -22,9 +22,9 @@ copyright 2013 alisdair sullivan
 
 install [vagrant][vagrant]
 
-download the required vagrant box
+download a vagrant box
 ```bash
-$ vagrant box add chef/ubuntu-12.10
+$ vagrant box add chef/ubuntu-14.04
 ```
 
 start vagrant and get to work
@@ -33,31 +33,40 @@ $ vagrant up
 $ vagrant ssh
 ```
 
+
 ## configuration ##
 
-all configuration is accessed via `settings.rb`
+### git ###
 
-### vagrant base image ###
+* `USER`
 
-* `VAGRANT_BOX`
-    
-    `precise32` is the default base image but anything debian-like from [vagrantbox.es](http://www.vagrantbox.es/) should work
-
-### git configuration ###
-
-* `GIT_USER`
-    
     sets `git config --system user.name`
 
-* `GIT_EMAIL`
-    
+* `EMAIL`
+
     sets `git config --system user.email`
+
+### locale ###
+
+* `LOCALE`
+
+    without an explicit locale set mix fails to work
+
+### erlang solutions repository ###
+
+* `ERLVSN`
+
+    the erlang solutions' erlang version to install
+
+* `EXVSN`
+
+    the erlang solutions' elixir version to install
 
 ### synced directories ###
 
-* `SYNCED_DIRS`
-    
-    vagrant supports syncing (mirroring) directories on the host machine with directories on the virtual machine. `SYNCED_DIRS` is a list of 2 element arrays that map a directory on the host machine to a directory on the virtual machine. vagrant requires the directory on the virtual machine be specified as an absolute path. the host machine directories may be specified relative to the `Vagrantfile`
+* `SYNC`
+
+    vagrant supports syncing (mirroring) directories on the host machine with directories on the virtual machine. `SYNC` is a list of 2 element arrays that map a directory on the host machine to a directory on the virtual machine. vagrant requires the directory on the virtual machine be specified as an absolute path. the host machine directories may be specified relative to the `Vagrantfile`
 
 
 ## description ##
@@ -65,11 +74,9 @@ all configuration is accessed via `settings.rb`
 it's early days. right now it just builds an ubuntu environment with the latest erlang. stay tuned
 
 
-
 ## acknowledgements ##
 
 all those people who can't get erlang to build on their machine
-
 
 
 ## license ##
@@ -98,5 +105,4 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [vagrant]: http://www.vagrantup.com/
-[basicest]: https://github.com/talentdeficit/basicest
 [MIT]: http://www.opensource.org/licenses/mit-license.html

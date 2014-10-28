@@ -2,13 +2,12 @@ include_recipe "apt"
 include_recipe "build-essential"
 include_recipe "git"
 
-node.default["erlang"]["gui_tools"] = "false"
-node.default["erlang"]["install_method"] = "source"
-
-include_recipe "erlang"
-
 user = node["erlang-dev"]["user"]
 email = node["erlang-dev"]["email"]
+
+erlvsn = node["erlang-dev"]["erlvsn"]
+exvsn = node["erlang-dev"]["exvsn"]
+
 
 if user
   bash "git user" do
@@ -35,9 +34,24 @@ LANG=#{locale}
 EOS
 end
 
+apt_repository "erlang-solutions" do
+  uri "http://packages.erlang-solutions.com/ubuntu"
+  distribution node['lsb']['codename']
+  components ["contrib"]
+  key "http://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc"
+end
+
+package "erlang" do
+  version erlvsn
+end
+
+package "elixir" do
+  version exvsn
+end
+
 git "rebar" do
   repository "https://github.com/rebar/rebar.git"
-  reference "2.5.0"
+  reference "2.5.1"
   destination "#{Chef::Config['file_cache_path']}/rebar"
   action :sync
 end
@@ -45,7 +59,7 @@ end
 bash "install rebar to /usr/local/bin" do
   code <<-EOH
 cd #{Chef::Config['file_cache_path']}/rebar
-/usr/local/bin/escript bootstrap
+escript bootstrap
 cp rebar /usr/local/bin/rebar
 EOH
 end

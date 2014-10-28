@@ -25,7 +25,7 @@ maintainer "alisdair sullivan"
 maintainer_email "alisdairsullivan@yahoo.ca"
 license "MIT"
 description "chef recipe for an erlang dev vm"
-version "1.0"
+version "2.0"
 
 supports "redhat"
 supports "centos"
@@ -34,6 +34,6 @@ supports "scientific"
 supports "debian"
 supports "ubuntu"
 
-%w{ build-essential git apt erlang }.each do |cookbook|
+%w{ build-essential git apt }.each do |cookbook|
   depends cookbook
 end
